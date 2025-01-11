@@ -1,0 +1,49 @@
+{
+  "name": "@webergency/endpoint",
+  "version": "0.0.1",
+  "description": "endpoint",
+  "license": "UNLICENSED",
+  "main": "dist/endpoint.js",
+  "types": "dist/endpoint.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/webergency/endpoint.git"
+  },
+  "scripts": {
+    "build": "npm i && rm -rf ./dist/* && tsc",
+    "version": "rm -rf ./dist/* && git pull && npm i && tsc && npm publish && npm run commit && git push",
+    "commit": "node -e \"const version = require('./package.json').version.trim(); require('child_process').execSync('git add . && git commit -m \\\"Version ' + version + '\\\"');\"",
+    "prepare": "ts-patch install && typia patch"
+  },
+  "dependencies": {
+    "@fastify/static": "^7.0.3",
+    "@nestjs/common": "10.3.7",
+    "@nestjs/core": "10.3.7",
+    "@nestjs/platform-fastify": "^10.3.7",
+    "@nestjs/swagger": "7.3.1",
+    "jose": "^5.2.4",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.1"
+  },
+  "devDependencies": {
+    "@pixcham-international/models": "^0.12.108",
+    "@types/node": "^20.12.7",
+    "ts-loader": "^9.5.1",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.4.4"
+  },
+  "peerDependencies": {
+    "@nestia/core": "2.6.4",
+    "@nestia/e2e": "0.4.3",
+    "@nestia/sdk": "2.6.4",
+    "@nestjs/cli": "10.3.2",
+    "@nestjs/schematics": "10.1.1",
+    "nestia": "5.3.0",
+    "ts-patch": "^3.1.2",
+    "typia": "5.5.10"
+  }
+}
